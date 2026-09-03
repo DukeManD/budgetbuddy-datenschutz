@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BudgetBuddy — Daten löschen und Datenschutz</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
+<style>
+  :root {
+    --ground: #F8F6F4;
+    --surface: #FFFFFF;
+    --ink: #2B2826;
+    --muted: #6E6862;
+    --hairline: #E2DCD5;
+    --accent: #3D684D;
+    --accent-soft: #E7EFE9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #171615;
+      --surface: #211F1D;
+      --ink: #F0EBE5;
+      --muted: #9C948B;
+      --hairline: #33302C;
+      --accent: #679E7A;
+      --accent-soft: #1E2B23;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  h1 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    line-height: 1.15;
+    margin: 0 0 .4rem;
+    text-wrap: balance;
+  }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; }
+  h2 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.35rem;
+    margin: 2.75rem 0 .75rem;
+  }
+  h3 { font-size: 1.02rem; font-weight: 600; margin: 1.6rem 0 .4rem; }
+  p, li { margin: 0 0 .9rem; }
+  ul { padding-left: 1.2rem; }
+  a { color: var(--accent); }
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0;
+  }
+  .box p:last-child, .box ul:last-child, .box li:last-child { margin-bottom: 0; }
+  .steps { counter-reset: schritt; list-style: none; padding: 0; }
+  .steps li {
+    counter-increment: schritt;
+    display: flex;
+    gap: .9rem;
+    align-items: baseline;
+    margin-bottom: .7rem;
+  }
+  .steps li::before {
+    content: counter(schritt);
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    min-width: 1.7rem;
+    height: 1.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-weight: 600; }
+  .wrap { overflow-x: auto; }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--hairline);
+    color: var(--muted);
+    font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>BudgetBuddy — Daten löschen</h1>
+  <p class="sub">Wie du deine Daten löschst, was dabei verschwindet und was bleibt.</p>
+
+  <h2>In der App löschen — sofort und vollständig</h2>
+  <p>Du brauchst dafür niemanden zu fragen. In der App:</p>
+  <ol class="steps">
+    <li>Optionen öffnen</li>
+    <li>Nach unten zu <strong>Alle Daten löschen</strong></li>
+    <li>Bestätigen</li>
+  </ol>
+
+  <p>Das löscht in einem Schritt:</p>
+
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr><th>Ort</th><th>Was gelöscht wird</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dein Gerät</strong></td>
+          <td>Alles: Einnahmen, Fixkosten, variable Ausgaben, geplante Rechnungen, Kreditkarten-Ausgaben, der gesamte Buchungsverlauf, Projekte, Spartöpfe, Kategorien, gescannte Produktpreise, gelernte Händler-Regeln und sämtliche Einstellungen.</td>
+        </tr>
+        <tr>
+          <td><strong>Gemeinsamer Haushalt</strong></td>
+          <td>Deine eigenen Buchungen und Projekte, dein Anzeigename und dein Platz im Haushalt. Deine gesicherten Einstellungen.</td>
+        </tr>
+        <tr>
+          <td><strong>Google Drive</strong></td>
+          <td>Die Sicherungsdatei der App, falls du eine angelegt hast.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Was absichtlich bleibt</h3>
+  <div class="box">
+    <p>Wenn du einen Haushalt mit einer zweiten Person teilst, bleiben deren Buchungen erhalten — sie gehören nicht dir. Ebenso bleibt die gemeinsame Einrichtung: <strong>Kategorien, Spartöpfe, gelernte Händler-Regeln und gescannte Produktpreise.</strong> Würden diese mitgelöscht, wäre die App deiner Partnerin oder deines Partners danach leer.</p>
+    <p>Wenn du den Haushalt ursprünglich erstellt hast, bleibt deine Nutzer-Kennung als Ersteller vermerkt. Das ist eine zufällige Zeichenfolge ohne Namen, E-Mail oder sonstige Angaben zu dir. Soll auch die verschwinden, schreib uns — siehe unten.</p>
+  </div>
+
+  <h2>Löschung per E-Mail anfordern</h2>
+  <p>Du kannst nicht mehr auf die App zugreifen, oder es soll darüber hinaus etwas entfernt werden? Dann schreib an:</p>
+  <div class="box">
+    <p><strong>DEINE-EMAIL@BEISPIEL.CH</strong></p>
+    <p>Bitte schreib dazu, mit welchem Google-Konto du die App benutzt hast — sonst können wir deine Daten nicht zuordnen.</p>
+  </div>
+  <p>Wir bestätigen den Eingang innerhalb von 7 Tagen und löschen innerhalb von 30 Tagen. Danach bekommst du eine Bestätigung.</p>
+
+  <h2>Aufbewahrung</h2>
+  <p>Gelöschte Daten werden sofort entfernt, nicht nur als gelöscht markiert. Aus technischen Sicherungen der Server-Infrastruktur verschwinden sie spätestens nach 30 Tagen.</p>
+
+  <h2 id="datenschutz">Datenschutzerklärung</h2>
+
+  <h3>Wer verantwortlich ist</h3>
+  <p>DEIN NAME, DEINE ADRESSE, DEINE-EMAIL@BEISPIEL.CH</p>
+
+  <h3>Welche Daten verarbeitet werden</h3>
+  <ul>
+    <li><strong>Deine Eingaben:</strong> Beträge, Bezeichnungen, Kategorien, Daten und Notizen zu deinen Buchungen. Diese liegen verschlüsselt auf deinem Gerät.</li>
+    <li><strong>Deine Google-Kennung:</strong> Wenn du dich anmeldest, um mit einer zweiten Person zu teilen oder eine Sicherung anzulegen. Wir speichern eine Nutzer-Kennung und deine E-Mail-Adresse, wie Google sie bereitstellt.</li>
+    <li><strong>Gescannte Belege und QR-Rechnungen:</strong> Die Auswertung geschieht vollständig auf deinem Gerät. Es werden keine Bilder übertragen oder gespeichert.</li>
+    <li><strong>Zahlungsbenachrichtigungen:</strong> Wenn du es einschaltest, liest die App Benachrichtigungen deiner Banking-Apps mit, um Beträge und Händler zu erkennen. Auch das geschieht auf dem Gerät.</li>
+  </ul>
+
+  <h3>Ohne Konto nutzbar</h3>
+  <p>Du kannst BudgetBuddy vollständig offline verwenden. Dann bleibt jede Buchung auf deinem Gerät, und es wird nichts übertragen.</p>
+
+  <h3>Wenn du einen Haushalt teilst</h3>
+  <p>Teilst du einen Haushalt mit einer zweiten Person, werden eure gemeinsamen Buchungen über Google Firebase (Firestore) synchronisiert, damit sie auf beiden Geräten erscheinen. Die Übertragung ist verschlüsselt. Zugriff hat ausschliesslich, wer zu eurem Haushalt gehört.</p>
+
+  <h3>Sicherung in Google Drive</h3>
+  <p>Wenn du eine Sicherung anlegst, wird sie in deinem eigenen, privaten App-Ordner in Google Drive abgelegt. Wir haben darauf keinen Zugriff.</p>
+
+  <h3>Was nicht passiert</h3>
+  <ul>
+    <li>Keine Werbung und kein Tracking.</li>
+    <li>Keine Weitergabe oder kein Verkauf von Daten an Dritte.</li>
+    <li>Keine Auswertung deiner Finanzdaten für andere Zwecke.</li>
+  </ul>
+
+  <h3>Deine Rechte</h3>
+  <p>Du kannst Auskunft über deine Daten verlangen, sie berichtigen oder löschen lassen. Das Löschen geht am schnellsten direkt in der App, siehe oben. Für alles Weitere genügt eine E-Mail an die oben genannte Adresse.</p>
+
+  <footer>
+    Stand: TT.MM.JJJJ · BudgetBuddy
+  </footer>
+
+</div>
+</body>
+</html>
