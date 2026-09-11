@@ -51,6 +51,7 @@
     margin: 2.75rem 0 .75rem;
   }
   h3 { font-size: 1.02rem; font-weight: 600; margin: 1.6rem 0 .4rem; }
+  h4 { font-size: .95rem; font-weight: 600; margin: 1.3rem 0 .35rem; color: var(--muted); }
   p, li { margin: 0 0 .9rem; }
   ul { padding-left: 1.2rem; }
   a { color: var(--accent); }
@@ -221,7 +222,9 @@
       </tbody>
     </table>
   </div>
-  <p>Speicherort der synchronisierten Daten: <!-- TODO: Firestore-Region eintragen, siehe Firebase Console → Firestore → Speicherort. Liegt sie ausserhalb der EU/Schweiz, gehoert hier ein Satz zur Uebermittlung in ein Drittland hin, gestuetzt auf die Standardvertragsklauseln von Google. --></p>
+  <h4>Wo die Daten liegen</h4>
+  <p>Die synchronisierten Buchungen eines geteilten Haushalts liegen in <strong>Zürich (Google-Region <code>europe-west6</code>)</strong> und damit in der Schweiz. Sie verlassen das Land für den normalen Betrieb nicht.</p>
+  <p>Das gilt für die synchronisierten Buchungen. Anmeldung und Absturzberichte laufen über Dienste, für die sich kein Speicherort wählen lässt; sie können ausserhalb der Schweiz und der EU verarbeitet werden. Grundlage dafür sind die Standardvertragsklauseln in Googles Auftragsverarbeitungsvertrag.</p>
 
   <h3>Was nicht passiert</h3>
   <ul>
