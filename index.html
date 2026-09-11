@@ -101,14 +101,26 @@
   <p class="sub">Wie du deine Daten löschst, was dabei verschwindet und was bleibt.</p>
 
   <h2>In der App löschen — sofort und vollständig</h2>
-  <p>Du brauchst dafür niemanden zu fragen. In der App:</p>
+  <p>Du brauchst dafür niemanden zu fragen. In der App gibt es zwei Wege, und sie tun nicht dasselbe.</p>
+
+  <h3>Konto löschen — Daten und Zugang</h3>
   <ol class="steps">
     <li>Optionen öffnen</li>
-    <li>Nach unten zu <strong>Alle Daten löschen</strong></li>
-    <li>Bestätigen</li>
+    <li>Nach unten zur <strong>Gefahrenzone</strong></li>
+    <li><strong>Konto löschen</strong> wählen und bestätigen</li>
+    <li>Du wirst noch einmal nach deinem Google-Konto gefragt — Google verlangt eine frische Anmeldung, bevor ein Zugang entfernt werden darf</li>
   </ol>
+  <p>Das löscht deine Daten <em>und</em> deinen Zugang. Danach bist du in dieser App nicht mehr vorhanden.</p>
 
-  <p>Das löscht in einem Schritt:</p>
+  <h3>Alle Daten löschen — nur die Daten</h3>
+  <ol class="steps">
+    <li>Optionen öffnen</li>
+    <li>Nach unten zur <strong>Gefahrenzone</strong></li>
+    <li><strong>Alle Daten löschen</strong> wählen und bestätigen</li>
+  </ol>
+  <p>Das löscht dieselben Daten, lässt deinen Zugang aber bestehen — du kannst dich wieder anmelden und neu anfangen.</p>
+
+  <p>Beide Wege löschen in einem Schritt:</p>
 
   <div class="wrap">
     <table>
@@ -147,7 +159,10 @@
   <p>Wir bestätigen den Eingang innerhalb von 7 Tagen und löschen innerhalb von 30 Tagen. Danach bekommst du eine Bestätigung.</p>
 
   <h2>Aufbewahrung</h2>
-  <p>Gelöschte Daten werden sofort entfernt, nicht nur als gelöscht markiert. Aus technischen Sicherungen der Server-Infrastruktur verschwinden sie spätestens nach 30 Tagen.</p>
+  <p><strong>Löschst du dein Konto oder alle Daten</strong> über die Schritte oben, werden sie sofort entfernt — nicht nur als gelöscht markiert.</p>
+  <p><strong>Löschst du einzelne Einträge</strong>, wandern sie in den Papierkorb, damit ein Versehen rückgängig gemacht werden kann. Dort bleiben sie bis zu 90 Tage und verschwinden danach endgültig. Du kannst den Papierkorb jederzeit selbst leeren.</p>
+  <p>Aus technischen Sicherungen der Server-Infrastruktur verschwinden gelöschte Daten spätestens nach 30 Tagen.</p>
+  <p>Absturzberichte werden nach 90 Tagen automatisch gelöscht.</p>
 
   <h2 id="datenschutz">Datenschutzerklärung</h2>
 
@@ -163,6 +178,7 @@
     <li><strong>Deine Google-Kennung:</strong> Wenn du dich anmeldest, um mit einer zweiten Person zu teilen oder eine Sicherung anzulegen. Wir speichern eine Nutzer-Kennung und deine E-Mail-Adresse, wie Google sie bereitstellt.</li>
     <li><strong>Gescannte Belege und QR-Rechnungen:</strong> Die Auswertung geschieht vollständig auf deinem Gerät. Es werden keine Bilder übertragen oder gespeichert.</li>
     <li><strong>Zahlungsbenachrichtigungen:</strong> Wenn du es einschaltest, liest die App Benachrichtigungen deiner Banking-Apps mit, um Beträge und Händler zu erkennen. Auch das geschieht auf dem Gerät.</li>
+    <li><strong>Absturzberichte:</strong> Stürzt die App ab, wird ein Bericht an Google Firebase Crashlytics übermittelt. Darin stehen Gerätetyp, Android-Version und die Stelle im Programm, an der es fehlgeschlagen ist — keine Beträge, keine Namen, keine Buchungen. Du kannst das unter <em>Optionen → Absturzberichte senden</em> abschalten.</li>
   </ul>
 
   <h3>Ohne Konto nutzbar</h3>
@@ -174,9 +190,42 @@
   <h3>Sicherung in Google Drive</h3>
   <p>Wenn du eine Sicherung anlegst, wird sie in deinem eigenen, privaten App-Ordner in Google Drive abgelegt. Wir haben darauf keinen Zugriff.</p>
 
+  <h3>Wer die Daten sonst noch verarbeitet</h3>
+  <p>BudgetBuddy gibt keine Daten weiter, um sie zu verwerten. Damit die App funktioniert, laufen aber Teile über Dienste von Google Ireland Limited beziehungsweise Google LLC:</p>
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr><th>Dienst</th><th>Wofür</th><th>Nur wenn</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Firebase Authentication</td>
+          <td>Anmeldung mit deinem Google-Konto</td>
+          <td>du dich anmeldest</td>
+        </tr>
+        <tr>
+          <td>Cloud Firestore</td>
+          <td>Abgleich der Buchungen zwischen zwei Geräten eines Haushalts</td>
+          <td>du einen Haushalt teilst</td>
+        </tr>
+        <tr>
+          <td>Google Drive</td>
+          <td>Sicherung im privaten App-Ordner deines eigenen Kontos</td>
+          <td>du eine Sicherung anlegst</td>
+        </tr>
+        <tr>
+          <td>Firebase Crashlytics</td>
+          <td>Absturzberichte</td>
+          <td>du sie nicht abgeschaltet hast</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Speicherort der synchronisierten Daten: <!-- TODO: Firestore-Region eintragen, siehe Firebase Console → Firestore → Speicherort. Liegt sie ausserhalb der EU/Schweiz, gehoert hier ein Satz zur Uebermittlung in ein Drittland hin, gestuetzt auf die Standardvertragsklauseln von Google. --></p>
+
   <h3>Was nicht passiert</h3>
   <ul>
-    <li>Keine Werbung und kein Tracking.</li>
+    <li>Keine Werbung, keine Werbe-Kennungen und kein Nutzungs-Tracking. Übermittelt wird nur, was oben steht — und davon nichts, um dein Verhalten zu beobachten.</li>
     <li>Keine Weitergabe oder kein Verkauf von Daten an Dritte.</li>
     <li>Keine Auswertung deiner Finanzdaten für andere Zwecke.</li>
   </ul>
@@ -185,7 +234,7 @@
   <p>Du kannst Auskunft über deine Daten verlangen, sie berichtigen oder löschen lassen. Das Löschen geht am schnellsten direkt in der App, siehe oben. Für alles Weitere genügt eine E-Mail an die oben genannte Adresse.</p>
 
   <footer>
-    Stand: 03.09.2026 · BudgetBuddy
+    Stand: 11.09.2026 · BudgetBuddy
   </footer>
 
 </div>
