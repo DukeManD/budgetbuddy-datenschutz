@@ -131,7 +131,7 @@
       <tbody>
         <tr>
           <td><strong>Dein Gerät</strong></td>
-          <td>Alles: Einnahmen, Fixkosten, variable Ausgaben, geplante Rechnungen, Kreditkarten-Ausgaben, der gesamte Buchungsverlauf, Projekte, Spartöpfe, Kategorien, gescannte Produktpreise, gelernte Händler-Regeln und sämtliche Einstellungen.</td>
+          <td>Alles: Einnahmen, Fixkosten, variable Ausgaben, geplante Rechnungen, Kreditkarten-Ausgaben, der gesamte Buchungsverlauf, Projekte, Spartöpfe, Kategorien, gescannte Produktpreise, gelernte Händler-Regeln, sämtliche Einstellungen und eine allfällige Aufzeichnung gesammelter Meldungen.</td>
         </tr>
         <tr>
           <td><strong>Gemeinsamer Haushalt</strong></td>
@@ -178,7 +178,8 @@
     <li><strong>Deine Eingaben:</strong> Beträge, Bezeichnungen, Kategorien, Daten und Notizen zu deinen Buchungen. Diese liegen verschlüsselt auf deinem Gerät.</li>
     <li><strong>Deine Google-Kennung:</strong> Wenn du dich anmeldest, um mit einer zweiten Person zu teilen oder eine Sicherung anzulegen. Wir speichern eine Nutzer-Kennung und deine E-Mail-Adresse, wie Google sie bereitstellt.</li>
     <li><strong>Gescannte Belege und QR-Rechnungen:</strong> Die Auswertung geschieht vollständig auf deinem Gerät. Es werden keine Bilder übertragen oder gespeichert.</li>
-    <li><strong>Zahlungsbenachrichtigungen:</strong> Wenn du es einschaltest, liest die App Benachrichtigungen deiner Banking-Apps mit, um Beträge und Händler zu erkennen. Auch das geschieht auf dem Gerät.</li>
+    <li><strong>Zahlungsbenachrichtigungen:</strong> Wenn du es einschaltest, liest die App Benachrichtigungen deiner Zahlungs- und Banking-Apps mit, um Beträge und Händler zu erkennen. Das geschieht auf dem Gerät; es wird nichts übertragen. Welche Apps mitgelesen werden, bestimmst du unter Optionen — die Auswahl bleibt auf deinem Gerät. Eine Ausnahme gibt es: die Aufzeichnung der Meldungen, siehe unten.</li>
+    <li><strong>Aufgezeichnete Meldungen:</strong> Nur wenn du „Meldungen sammeln“ einschaltest. Siehe den eigenen Abschnitt weiter unten — es ist der einzige Weg, auf dem Finanzdaten zu uns gelangen können, und er geht nie ohne dein Zutun.</li>
     <li><strong>Absturzberichte:</strong> Stürzt die App ab, wird ein Bericht an Google Firebase Crashlytics übermittelt. Darin stehen Gerätetyp, Android-Version und die Stelle im Programm, an der es fehlgeschlagen ist — keine Beträge, keine Namen, keine Buchungen. Du kannst das unter <em>Optionen → Absturzberichte senden</em> abschalten.</li>
   </ul>
 
@@ -222,9 +223,28 @@
       </tbody>
     </table>
   </div>
+  <p>Ein Dienst ausserhalb davon wird berührt: Scannst du eine QR-Rechnung, die auf eine <strong>fremde Währung</strong> lautet, holt die App die Tageskurse der <strong>Europäischen Zentralbank</strong> (<code>ecb.europa.eu</code>), um dir neben dem Betrag eine Schätzung anzuzeigen. Abgerufen wird eine öffentliche Kursliste; es wird nichts über dich, deine Rechnung oder deren Betrag übermittelt. Wie bei jedem Aufruf im Internet sieht die Gegenseite dabei deine IP-Adresse. Die Kurse werden auf dem Gerät zwischengespeichert, damit das selten passiert.</p>
+
   <h4>Wo die Daten liegen</h4>
   <p>Die synchronisierten Buchungen eines geteilten Haushalts liegen in <strong>Zürich (Google-Region <code>europe-west6</code>)</strong> und damit in der Schweiz. Sie verlassen das Land für den normalen Betrieb nicht.</p>
   <p>Das gilt für die synchronisierten Buchungen. Anmeldung und Absturzberichte laufen über Dienste, für die sich kein Speicherort wählen lässt; sie können ausserhalb der Schweiz und der EU verarbeitet werden. Grundlage dafür sind die Standardvertragsklauseln in Googles Auftragsverarbeitungsvertrag.</p>
+
+  <h3>Meldungen sammeln (Diagnose)</h3>
+  <p>Erkennt BudgetBuddy eine Zahlung nicht oder falsch, lässt sich der Grund nachträglich kaum finden: Android gibt eine Benachrichtigung nur einmal weiter und vergisst sie danach. Deshalb gibt es unter Optionen den Schalter <strong>Meldungen sammeln</strong>.</p>
+  <div class="box">
+    <p><strong>Ab Werk ist er aus.</strong> Solange er aus ist, wird nichts aufgezeichnet.</p>
+    <p>Ist er an, schreibt die App jede gelesene Meldung <strong>im Wortlaut</strong> in eine Datei auf deinem Gerät: Zeitpunkt, die App, von der sie kam, Titel und Text — und damit <strong>Beträge und Händlernamen</strong> — sowie das Ergebnis der Erkennung.</p>
+    <p>Diese Datei bleibt auf dem Gerät. Sie wird <strong>nicht</strong> automatisch übertragen, weder zu uns noch in die Cloud noch in eine Sicherung. Sie ist von der Geräte-Sicherung ausgenommen und wandert deshalb auch nicht auf ein neues Telefon.</p>
+    <p>Du hast drei Knöpfe daneben: <strong>Speichern</strong> legt eine Kopie dort ab, wo du sie haben willst. <strong>Senden</strong> öffnet dein Mailprogramm mit der Datei im Anhang, adressiert an uns — abgeschickt wird erst, wenn du es tust. <strong>Löschen</strong> wirft die Aufzeichnung weg.</p>
+    <p>Schickst du uns eine solche Datei, sehen wir, was darin steht. Wir verwenden sie ausschliesslich, um die Erkennung zu verbessern, und löschen sie, sobald das erledigt ist, spätestens nach 90 Tagen. Rechtsgrundlage ist deine Einwilligung, die du jederzeit zurückziehen kannst, indem du den Schalter ausschaltest und die Datei löschst.</p>
+    <p>Die Aufzeichnung ist bewusst begrenzt: sie hört bei 256 KB auf zu wachsen. Sie ist ein Werkzeug für den Moment, keine Chronik.</p>
+    <p>Bedenke: in dieser Datei stehen Beträge und Händler <strong>im Klartext</strong>, während deine Buchungen daneben verschlüsselt liegen. Lass den Schalter aus, wenn du ihn nicht gerade brauchst.</p>
+  </div>
+
+  <h3>Einzelne Ausgaben verbergen</h3>
+  <p>Bei einer variablen Ausgabe oder einer Kreditkarten-Ausgabe kannst du <strong>Details verbergen</strong> einschalten. Dann erhält die zweite Person deines Haushalts <strong>weder Namen noch Kategorie</strong> — beide werden vor der Übertragung entfernt und verlassen dein Gerät nicht.</p>
+  <p>Damit du dich nicht täuschst: <strong>Betrag und Datum werden weiterhin geteilt.</strong> Anders ginge es nicht, denn ein gemeinsames Budget, aus dem Beträge unsichtbar verschwinden, zeigt der zweiten Person eine falsche Zahl, ohne dass sie es merken könnte. Geteilt wird, <em>dass</em> etwas ausgegeben wurde, nicht wofür.</p>
+  <p>Es ist ausserdem kein Schutz gegen einen Menschen: auf deinem eigenen Gerät steht alles im Klartext. Es schützt gegen den Abgleich, nicht gegen den Blick über die Schulter.</p>
 
   <h3>Was nicht passiert</h3>
   <ul>
@@ -237,7 +257,7 @@
   <p>Du kannst Auskunft über deine Daten verlangen, sie berichtigen oder löschen lassen. Das Löschen geht am schnellsten direkt in der App, siehe oben. Für alles Weitere genügt eine E-Mail an die oben genannte Adresse.</p>
 
   <footer>
-    Stand: 11.09.2026 · BudgetBuddy
+    Stand: 21.09.2026 · BudgetBuddy
   </footer>
 
 </div>
