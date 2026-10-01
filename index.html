@@ -3,48 +3,263 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Parita – Datenschutz ist umgezogen</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://parita.web.app/datenschutz/">
-<!--
-  Die Datenschutzerklaerung wird jetzt mit der Website gepflegt
-  (BudgetBuddy-Repo, website/datenschutz/) und liegt unter
-  parita.web.app/datenschutz/. Diese Seite bleibt nur, damit alte Links
-  weiter ankommen.
-
-  Zuerst das Skript: es nimmt den Anker mit (#datenschutz, #loeschen).
-  Das meta refresh ist der Weg fuer alle, bei denen kein Skript laeuft --
-  dort geht der Anker verloren, man landet oben auf der Seite, und oben
-  steht ohnehin die Anleitung zum Loeschen.
--->
-<script>
-  location.replace("https://parita.web.app/datenschutz/" + location.hash);
-</script>
-<meta http-equiv="refresh" content="0; url=https://parita.web.app/datenschutz/">
+<title>BudgetBuddy — Daten löschen und Datenschutz</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap">
 <style>
-  :root { --ground: #F8F6F4; --ink: #2B2826; --muted: #6E6862; --accent: #3D684D; }
-  @media (prefers-color-scheme: dark) {
-    :root { --ground: #171615; --ink: #F0EBE5; --muted: #9C948B; --accent: #679E7A; }
+  :root {
+    --ground: #F8F6F4;
+    --surface: #FFFFFF;
+    --ink: #2B2826;
+    --muted: #6E6862;
+    --hairline: #E2DCD5;
+    --accent: #3D684D;
+    --accent-soft: #E7EFE9;
   }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #171615;
+      --surface: #211F1D;
+      --ink: #F0EBE5;
+      --muted: #9C948B;
+      --hairline: #33302C;
+      --accent: #679E7A;
+      --accent-soft: #1E2B23;
+    }
+  }
+  * { box-sizing: border-box; }
   body {
     margin: 0;
     background: var(--ground);
     color: var(--ink);
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 17px;
-    line-height: 1.6;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
-  .page { max-width: 36rem; margin: 0 auto; padding: 4rem 1.5rem; }
-  h1 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 .8rem; }
-  p { margin: 0 0 1rem; color: var(--muted); }
-  a { color: var(--accent); font-weight: 600; }
+  .page { max-width: 44rem; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+  h1 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    line-height: 1.15;
+    margin: 0 0 .4rem;
+    text-wrap: balance;
+  }
+  .sub { color: var(--muted); margin: 0 0 2.5rem; }
+  h2 {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.35rem;
+    margin: 2.75rem 0 .75rem;
+  }
+  h3 { font-size: 1.02rem; font-weight: 600; margin: 1.6rem 0 .4rem; }
+  h4 { font-size: .95rem; font-weight: 600; margin: 1.3rem 0 .35rem; color: var(--muted); }
+  p, li { margin: 0 0 .9rem; }
+  ul { padding-left: 1.2rem; }
+  a { color: var(--accent); }
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    padding: 1.1rem 1.3rem;
+    margin: 1.2rem 0;
+  }
+  .box p:last-child, .box ul:last-child, .box li:last-child { margin-bottom: 0; }
+  .steps { counter-reset: schritt; list-style: none; padding: 0; }
+  .steps li {
+    counter-increment: schritt;
+    display: flex;
+    gap: .9rem;
+    align-items: baseline;
+    margin-bottom: .7rem;
+  }
+  .steps li::before {
+    content: counter(schritt);
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    min-width: 1.7rem;
+    height: 1.7rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .95rem; }
+  th, td { text-align: left; padding: .55rem .7rem; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  th { font-weight: 600; }
+  .wrap { overflow-x: auto; }
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--hairline);
+    color: var(--muted);
+    font-size: .9rem;
+  }
 </style>
 </head>
 <body>
 <div class="page">
-  <h1>Die Datenschutzerklärung ist umgezogen</h1>
-  <p>BudgetBuddy heisst jetzt Parita. Datenschutzerklärung und Anleitung zum Löschen deiner Daten findest du hier:</p>
-  <p><a href="https://parita.web.app/datenschutz/">parita.web.app/datenschutz</a></p>
+
+  <h1>BudgetBuddy — Daten löschen</h1>
+  <p class="sub">Wie du deine Daten löschst, was dabei verschwindet und was bleibt.</p>
+
+  <h2>In der App löschen — sofort und vollständig</h2>
+  <p>Du brauchst dafür niemanden zu fragen. In der App gibt es zwei Wege, und sie tun nicht dasselbe.</p>
+
+  <h3>Konto löschen — Daten und Zugang</h3>
+  <ol class="steps">
+    <li>Optionen öffnen</li>
+    <li>Nach unten zur <strong>Gefahrenzone</strong></li>
+    <li><strong>Konto löschen</strong> wählen und bestätigen</li>
+    <li>Du wirst noch einmal nach deinem Google-Konto gefragt — Google verlangt eine frische Anmeldung, bevor ein Zugang entfernt werden darf</li>
+  </ol>
+  <p>Das löscht deine Daten <em>und</em> deinen Zugang. Danach bist du in dieser App nicht mehr vorhanden.</p>
+
+  <h3>Alle Daten löschen — nur die Daten</h3>
+  <ol class="steps">
+    <li>Optionen öffnen</li>
+    <li>Nach unten zur <strong>Gefahrenzone</strong></li>
+    <li><strong>Alle Daten löschen</strong> wählen und bestätigen</li>
+  </ol>
+  <p>Das löscht dieselben Daten, lässt deinen Zugang aber bestehen — du kannst dich wieder anmelden und neu anfangen.</p>
+
+  <p>Beide Wege löschen in einem Schritt:</p>
+
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr><th>Ort</th><th>Was gelöscht wird</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dein Gerät</strong></td>
+          <td>Alles: Einnahmen, Fixkosten, variable Ausgaben, geplante Rechnungen, Kreditkarten-Ausgaben, der gesamte Buchungsverlauf, Projekte, Spartöpfe, Kategorien, gescannte Produktpreise, gelernte Händler-Regeln, sämtliche Einstellungen und eine allfällige Aufzeichnung gesammelter Meldungen.</td>
+        </tr>
+        <tr>
+          <td><strong>Gemeinsamer Haushalt</strong></td>
+          <td>Deine eigenen Buchungen und Projekte, dein Anzeigename und dein Platz im Haushalt. Deine gesicherten Einstellungen.</td>
+        </tr>
+        <tr>
+          <td><strong>Google Drive</strong></td>
+          <td>Die Sicherungsdatei der App, falls du eine angelegt hast.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Was absichtlich bleibt</h3>
+  <div class="box">
+    <p>Wenn du einen Haushalt mit einer zweiten Person teilst, bleiben deren Buchungen erhalten — sie gehören nicht dir. Ebenso bleibt die gemeinsame Einrichtung: <strong>Kategorien, Spartöpfe, gelernte Händler-Regeln und gescannte Produktpreise.</strong> Würden diese mitgelöscht, wäre die App deiner Partnerin oder deines Partners danach leer.</p>
+    <p>Wenn du den Haushalt ursprünglich erstellt hast, bleibt deine Nutzer-Kennung als Ersteller vermerkt. Das ist eine zufällige Zeichenfolge ohne Namen, E-Mail oder sonstige Angaben zu dir. Soll auch die verschwinden, schreib uns — siehe unten.</p>
+  </div>
+
+  <h2>Löschung per E-Mail anfordern</h2>
+  <p>Du kannst nicht mehr auf die App zugreifen, oder es soll darüber hinaus etwas entfernt werden? Dann schreib an:</p>
+  <div class="box">
+    <p><strong>myaurahub@gmail.com</strong></p>
+    <p>Bitte schreib dazu, mit welchem Google-Konto du die App benutzt hast — sonst können wir deine Daten nicht zuordnen.</p>
+  </div>
+  <p>Wir bestätigen den Eingang innerhalb von 7 Tagen und löschen innerhalb von 30 Tagen. Danach bekommst du eine Bestätigung.</p>
+
+  <h2>Aufbewahrung</h2>
+  <p><strong>Löschst du dein Konto oder alle Daten</strong> über die Schritte oben, werden sie sofort entfernt — nicht nur als gelöscht markiert.</p>
+  <p><strong>Löschst du einzelne Einträge</strong>, wandern sie in den Papierkorb, damit ein Versehen rückgängig gemacht werden kann. Dort bleiben sie 30 Tage und verschwinden danach endgültig. Du kannst den Papierkorb jederzeit selbst leeren.</p>
+  <p>Aus technischen Sicherungen der Server-Infrastruktur verschwinden gelöschte Daten spätestens nach 30 Tagen.</p>
+  <p>Absturzberichte werden nach 90 Tagen automatisch gelöscht.</p>
+
+  <h2 id="datenschutz">Datenschutzerklärung</h2>
+
+  <h3>Wer verantwortlich ist</h3>
+  <p>Dario Chiga</p>
+  <p>Gemeindehausweg 9</p>
+  <p>8542 Wiesendangen</p>
+  <p>myaurahub@gmail.com</p>
+
+  <h3>Welche Daten verarbeitet werden</h3>
+  <ul>
+    <li><strong>Deine Eingaben:</strong> Beträge, Bezeichnungen, Kategorien, Daten und Notizen zu deinen Buchungen. Diese liegen verschlüsselt auf deinem Gerät.</li>
+    <li><strong>Deine Google-Kennung:</strong> Wenn du dich anmeldest, um mit einer zweiten Person zu teilen oder eine Sicherung anzulegen. Wir speichern eine Nutzer-Kennung und deine E-Mail-Adresse, wie Google sie bereitstellt.</li>
+    <li><strong>Gescannte Belege und QR-Rechnungen:</strong> Die Auswertung geschieht vollständig auf deinem Gerät. Es werden keine Bilder übertragen oder gespeichert.</li>
+    <li><strong>Zahlungsbenachrichtigungen:</strong> Wenn du es einschaltest, liest die App Benachrichtigungen deiner Zahlungs- und Banking-Apps mit, um Beträge und Händler zu erkennen. Das geschieht auf dem Gerät; es wird nichts übertragen. Welche Apps mitgelesen werden, bestimmst du unter Optionen — die Auswahl bleibt auf deinem Gerät. Eine Ausnahme gibt es: die Aufzeichnung der Meldungen, siehe unten.</li>
+    <li><strong>Aufgezeichnete Meldungen:</strong> Nur wenn du „Meldungen sammeln“ einschaltest. Siehe den eigenen Abschnitt weiter unten — es ist der einzige Weg, auf dem Finanzdaten zu uns gelangen können, und er geht nie ohne dein Zutun.</li>
+    <li><strong>Absturzberichte:</strong> Stürzt die App ab, wird ein Bericht an Google Firebase Crashlytics übermittelt. Darin stehen Gerätetyp, Android-Version und die Stelle im Programm, an der es fehlgeschlagen ist — keine Beträge, keine Namen, keine Buchungen. Du kannst das unter <em>Optionen → Absturzberichte senden</em> abschalten.</li>
+  </ul>
+
+  <h3>Ohne Konto nutzbar</h3>
+  <p>Du kannst BudgetBuddy vollständig offline verwenden. Dann bleibt jede Buchung auf deinem Gerät, und es wird nichts übertragen.</p>
+
+  <h3>Wenn du einen Haushalt teilst</h3>
+  <p>Teilst du einen Haushalt mit einer zweiten Person, werden eure gemeinsamen Buchungen über Google Firebase (Firestore) synchronisiert, damit sie auf beiden Geräten erscheinen. Die Übertragung ist verschlüsselt. Zugriff hat ausschliesslich, wer zu eurem Haushalt gehört.</p>
+
+  <h3>Sicherung in Google Drive</h3>
+  <p>Wenn du eine Sicherung anlegst, wird sie in deinem eigenen, privaten App-Ordner in Google Drive abgelegt. Wir haben darauf keinen Zugriff.</p>
+
+  <h3>Wer die Daten sonst noch verarbeitet</h3>
+  <p>BudgetBuddy gibt keine Daten weiter, um sie zu verwerten. Damit die App funktioniert, laufen aber Teile über Dienste von Google Ireland Limited beziehungsweise Google LLC:</p>
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr><th>Dienst</th><th>Wofür</th><th>Nur wenn</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Firebase Authentication</td>
+          <td>Anmeldung mit deinem Google-Konto</td>
+          <td>du dich anmeldest</td>
+        </tr>
+        <tr>
+          <td>Cloud Firestore</td>
+          <td>Abgleich der Buchungen zwischen zwei Geräten eines Haushalts</td>
+          <td>du einen Haushalt teilst</td>
+        </tr>
+        <tr>
+          <td>Google Drive</td>
+          <td>Sicherung im privaten App-Ordner deines eigenen Kontos</td>
+          <td>du eine Sicherung anlegst</td>
+        </tr>
+        <tr>
+          <td>Firebase Crashlytics</td>
+          <td>Absturzberichte</td>
+          <td>du sie nicht abgeschaltet hast</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Ein Dienst ausserhalb davon wird berührt: Scannst du eine QR-Rechnung, die auf eine <strong>fremde Währung</strong> lautet, holt die App die Tageskurse der <strong>Europäischen Zentralbank</strong> (<code>ecb.europa.eu</code>), um dir neben dem Betrag eine Schätzung anzuzeigen. Abgerufen wird eine öffentliche Kursliste; es wird nichts über dich, deine Rechnung oder deren Betrag übermittelt. Wie bei jedem Aufruf im Internet sieht die Gegenseite dabei deine IP-Adresse. Die Kurse werden auf dem Gerät zwischengespeichert, damit das selten passiert.</p>
+
+  <h4>Wo die Daten liegen</h4>
+  <p>Die synchronisierten Buchungen eines geteilten Haushalts liegen in <strong>Zürich (Google-Region <code>europe-west6</code>)</strong> und damit in der Schweiz. Sie verlassen das Land für den normalen Betrieb nicht.</p>
+  <p>Das gilt für die synchronisierten Buchungen. Anmeldung und Absturzberichte laufen über Dienste, für die sich kein Speicherort wählen lässt; sie können ausserhalb der Schweiz und der EU verarbeitet werden. Grundlage dafür sind die Standardvertragsklauseln in Googles Auftragsverarbeitungsvertrag.</p>
+
+  <h3>Meldungen sammeln (Diagnose)</h3>
+  <p>Erkennt BudgetBuddy eine Zahlung nicht oder falsch, lässt sich der Grund nachträglich kaum finden: Android gibt eine Benachrichtigung nur einmal weiter und vergisst sie danach. Deshalb gibt es unter Optionen den Schalter <strong>Meldungen sammeln</strong>.</p>
+  <div class="box">
+    <p><strong>Ab Werk ist er aus.</strong> Solange er aus ist, wird nichts aufgezeichnet.</p>
+    <p>Ist er an, schreibt die App jede gelesene Meldung <strong>im Wortlaut</strong> in eine Datei auf deinem Gerät: Zeitpunkt, die App, von der sie kam, Titel und Text — und damit <strong>Beträge und Händlernamen</strong> — sowie das Ergebnis der Erkennung.</p>
+    <p>Diese Datei bleibt auf dem Gerät. Sie wird <strong>nicht</strong> automatisch übertragen, weder zu uns noch in die Cloud noch in eine Sicherung. Sie ist von der Geräte-Sicherung ausgenommen und wandert deshalb auch nicht auf ein neues Telefon.</p>
+    <p>Du hast drei Knöpfe daneben: <strong>Speichern</strong> legt eine Kopie dort ab, wo du sie haben willst. <strong>Senden</strong> öffnet dein Mailprogramm mit der Datei im Anhang, adressiert an uns — abgeschickt wird erst, wenn du es tust. <strong>Löschen</strong> wirft die Aufzeichnung weg.</p>
+    <p>Schickst du uns eine solche Datei, sehen wir, was darin steht. Wir verwenden sie ausschliesslich, um die Erkennung zu verbessern, und löschen sie, sobald das erledigt ist, spätestens nach 90 Tagen. Rechtsgrundlage ist deine Einwilligung, die du jederzeit zurückziehen kannst, indem du den Schalter ausschaltest und die Datei löschst.</p>
+    <p>Die Aufzeichnung ist bewusst begrenzt: sie hört bei 256 KB auf zu wachsen. Sie ist ein Werkzeug für den Moment, keine Chronik.</p>
+    <p>Bedenke: in dieser Datei stehen Beträge und Händler <strong>im Klartext</strong>, während deine Buchungen daneben verschlüsselt liegen. Lass den Schalter aus, wenn du ihn nicht gerade brauchst.</p>
+  </div>
+
+  <h3>Einzelne Ausgaben verbergen</h3>
+  <p>Bei einer variablen Ausgabe oder einer Kreditkarten-Ausgabe kannst du <strong>Details verbergen</strong> einschalten. Dann erhält die zweite Person deines Haushalts <strong>weder Namen noch Kategorie</strong> — beide werden vor der Übertragung entfernt und verlassen dein Gerät nicht.</p>
+  <p>Damit du dich nicht täuschst: <strong>Betrag und Datum werden weiterhin geteilt.</strong> Anders ginge es nicht, denn ein gemeinsames Budget, aus dem Beträge unsichtbar verschwinden, zeigt der zweiten Person eine falsche Zahl, ohne dass sie es merken könnte. Geteilt wird, <em>dass</em> etwas ausgegeben wurde, nicht wofür.</p>
+  <p>Es ist ausserdem kein Schutz gegen einen Menschen: auf deinem eigenen Gerät steht alles im Klartext. Es schützt gegen den Abgleich, nicht gegen den Blick über die Schulter.</p>
+
+  <h3>Was nicht passiert</h3>
+  <ul>
+    <li>Keine Werbung, keine Werbe-Kennungen und kein Nutzungs-Tracking. Übermittelt wird nur, was oben steht — und davon nichts, um dein Verhalten zu beobachten.</li>
+    <li>Keine Weitergabe oder kein Verkauf von Daten an Dritte.</li>
+    <li>Keine Auswertung deiner Finanzdaten für andere Zwecke.</li>
+  </ul>
+
+  <h3>Deine Rechte</h3>
+  <p>Du kannst Auskunft über deine Daten verlangen, sie berichtigen oder löschen lassen. Das Löschen geht am schnellsten direkt in der App, siehe oben. Für alles Weitere genügt eine E-Mail an die oben genannte Adresse.</p>
+
+  <footer>
+    Stand: 21.09.2026 · BudgetBuddy
+  </footer>
+
 </div>
 </body>
 </html>
